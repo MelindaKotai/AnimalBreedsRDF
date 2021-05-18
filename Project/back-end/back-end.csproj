@@ -5,5 +5,9 @@
     <RootNamespace>back_end</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="dotNetRDF" Version="2.7.0" />
+  </ItemGroup>
+
 
 </Project>
