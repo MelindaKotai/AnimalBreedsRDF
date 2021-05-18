@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front-end';
+  ActivateShowCategories = false;
+  // tslint:disable-next-line: typedef
+  showCategories(){
+    this.ActivateShowCategories = true;
+  }
 }
