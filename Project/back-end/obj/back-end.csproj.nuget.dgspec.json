@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Meli\\source\\repos\\ProiectWebSemantic\\Project\\back-end\\back-end.csproj": {}
+    "C:\\Users\\lazar\\OneDrive\\Desktop\\faculta\\anul 3\\web semantic\\proiect web\\Project\\back-end\\back-end.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Meli\\source\\repos\\ProiectWebSemantic\\Project\\back-end\\back-end.csproj": {
+    "C:\\Users\\lazar\\OneDrive\\Desktop\\faculta\\anul 3\\web semantic\\proiect web\\Project\\back-end\\back-end.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Meli\\source\\repos\\ProiectWebSemantic\\Project\\back-end\\back-end.csproj",
+        "projectUniqueName": "C:\\Users\\lazar\\OneDrive\\Desktop\\faculta\\anul 3\\web semantic\\proiect web\\Project\\back-end\\back-end.csproj",
         "projectName": "back-end",
-        "projectPath": "C:\\Users\\Meli\\source\\repos\\ProiectWebSemantic\\Project\\back-end\\back-end.csproj",
-        "packagesPath": "C:\\Users\\Meli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Meli\\source\\repos\\ProiectWebSemantic\\Project\\back-end\\obj\\",
+        "projectPath": "C:\\Users\\lazar\\OneDrive\\Desktop\\faculta\\anul 3\\web semantic\\proiect web\\Project\\back-end\\back-end.csproj",
+        "packagesPath": "C:\\Users\\lazar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lazar\\OneDrive\\Desktop\\faculta\\anul 3\\web semantic\\proiect web\\Project\\back-end\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Meli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
