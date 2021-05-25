@@ -1,3 +1,4 @@
+import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./animal-categories.component.css']
 })
 export class AnimalCategoriesComponent implements OnInit {
+data = []
+  constructor(private service: SharedService) {
+    this.service.getAnimalsList().subscribe(data => {
+      console.warn(data)
+      this.data = data
+    });
+   }
+
 
 
   ngOnInit(): void {

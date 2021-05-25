@@ -8,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowCatsComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
-  CatsList:any=[];
+  constructor(private service: SharedService) { }
+  CatsList: any = [];
 
   ngOnInit(): void {
+    this.refreshCatsList();
   }
   // tslint:disable-next-line: typedef
   refreshCatsList(){
-    this.service.getAnimalsList().subscribe(data=>{
+    this.service.getAnimalsList().subscribe(data => {
+      
       this.CatsList = data;
+      console.warn(this.CatsList)
     });
   }
 

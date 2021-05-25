@@ -1,0 +1,43 @@
+<div class="jumbotron py-3">
+    <h1 class="dispaly-4 text-center">
+        Detalii animale
+    </h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <app-animals></app-animals>
+    </div>
+<div class="row">
+    <div class="col-md-6">
+        <app-breed-details-form></app-breed-details-form>
+    </div>
+    <div class="col-md-6">
+        <table  class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nume rasa</th>
+                    <th>Imagine</th>
+                    <th>Descriere</th>
+                    <th>Hipoalergenic</th>
+                    <th>Pret</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>document.write(dataBreeds)</script>
+                <tr *ngfor="let ab of dataBreeds"><!--service.list-->
+                    <td (click)="populateForm(ab)">{{ab.name}}</td>
+                    <td (click)="populateForm(ab)">{{ab.image}}</td>
+                    <td (click)="populateForm(ab)">{{ab.description}}</td>
+                    <td (click)="populateForm(ab)">{{ab.hypoalergenic}}</td>
+                    <td (click)="populateForm(ab)">{{ab.price}}</td>
+                    <th>name</th>
+                    <td>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(ab.name)">Delete</i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

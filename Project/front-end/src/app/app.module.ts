@@ -1,3 +1,4 @@
+
 import { ShowDogsComponent } from './dogs/show-dogs/show-dogs.component';
 import { SharedService } from './shared.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,7 +17,12 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalCategoriesComponent } from './animal-categories/animal-categories.component';
 import {DogsComponent} from './dogs/dogs.component';
+import { BreedDetailsComponent } from './breed-details/breed-details.component';
+import { BreedDetailsFormComponent } from './breed-details/breed-details-form/breed-details-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+import { AnimalsComponent } from './breed-details/animals/animals.component';
 
 
 @NgModule({
@@ -29,14 +35,19 @@ import {DogsComponent} from './dogs/dogs.component';
     ParrotsComponent,
     ShowParrotsComponent,
     InsertAnimalsComponent,
-    AnimalCategoriesComponent
+    AnimalCategoriesComponent,
+    BreedDetailsComponent,
+    BreedDetailsFormComponent,
+    AnimalsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [SharedService],
