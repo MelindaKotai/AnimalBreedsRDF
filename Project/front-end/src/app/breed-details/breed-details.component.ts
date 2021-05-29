@@ -1,16 +1,16 @@
 import { SharedService } from 'src/app/shared.service';
-import { AnimalsComponent } from './animals/animals.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+
 import { ToastrService } from 'ngx-toastr';
 import { BreedDTO } from './../shared/shared.model';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 /*export class BreedDTO {
-  construct( 
+  construct(
     public id: string,
   public  name: string,
    public image:string,
@@ -26,47 +26,72 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./breed-details.component.css']
 })
 export class BreedDetailsComponent implements OnInit {
-public breeds: any[];
-public id: string;
+  public breeds: any[];
+  public id: string;
+  showCategories: boolean = false;
+  data = [];
 
 
   constructor(public service: SharedService, private toastr: ToastrService, private route: ActivatedRoute) {
-         // console.log(this.service.dataBreeds);
-         this.breeds = this.service.dataBreeds;
-         console.log(this.breeds);
    }
- // breed = this.service.dataBreeds;
 
-
-
+ getCategories(){
+  this.showCategories = true;
+  this.service.getAnimalsList().subscribe(data => {
+    this.data = data;
+  });
+ }
 
 ngOnInit(): void {
-    this.service.refreshList();
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.service.showBreeds(this.id);
-    console.log(this.id);
-  }
-  /*showBreeds(){
-  
-    this.service.getBreedsList(this.id).subscribe(data => {
-      console.warn(data);
-;     this.dataBreeds = data;
-    
-  });}*/
-  
-populateForm(selectedRecord: BreedDTO){
-    this.service.formData = Object.assign({}, selectedRecord);
   }
 
+  resetForm(form: NgForm){
+    form.form.reset();
+    this.service.formData = new BreedDTO();
+  }
+
+   insertRecord(form: NgForm){
+     this.service.formData.categoryId = this.service.currentAnimal;
+     this.service.formData.price = +this.service.formData.price;
+     this.service.formData.hypoalergenic = !!this.service.formData.hypoalergenic;
+     this.service.postaddBreed(this.service.formData).subscribe(
+       res => {
+         this.resetForm(form);
+         this.toastr.success('Au fost introduse cu succes', 'Detalii rasa');
+         this.changeBreeds(this.service.currentAnimal);
+         
+       },
+       err => {
+        console.log(err);
+        alert(err.error); }
+     ); }
+
+
+  changeBreeds(item){
+    this.service.currentAnimal = item;
+    this.service.showBreeds(item).subscribe(data => {
+      this.breeds = data;
+    });
+  }
+
+
+
 onDelete (id: string){
+  console.log(id);
     this.service.deleteBreed(id)
     .subscribe(
       res => {
-        this.service.refreshList();
         this.toastr.error('Sters cu succes');
+        this.changeBreeds(this.service.currentAnimal);
+        
       },
       err => {console.log(err);
       }
     );
   }
+
+
+  // populateForm(selectedRecord: BreedDTO){
+  //   this.service.formData = Object.assign({}, selectedRecord);
+  // }
 }

@@ -92,7 +92,7 @@ namespace back_end.Controllers
 
 
 
-        [HttpPost]
+        [HttpDelete]
         [Route("Delete/{id}")]
         public ActionResult Delete(string id)
         {

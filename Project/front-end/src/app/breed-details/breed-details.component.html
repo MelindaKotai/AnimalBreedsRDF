@@ -5,11 +5,62 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <app-animals></app-animals>
+      <button class="btn btn-light" (click)="getCategories()">Afisati categoriile</button>
+      <div class="col-md-6" *ngIf="showCategories==true">
+          <table  class="table">
+              <thead class="thead-light">
+                  <tr *ngFor="let category of data">
+                      <th>
+                          <button class='btn btn-light'  value="{{category.id}}" #item (click)="changeBreeds(item.value)" routerLink="./breed-details/{{category.id}}">{{category.name}}</button>
+                      </th>
+                  </tr>
+              </thead>
+            </table>
+      </div>
     </div>
+  </div>
 <div class="row">
     <div class="col-md-6">
-        <app-breed-details-form></app-breed-details-form>
+      <form novalidate #form="ngForm">
+        <!-- <input type='hidden' name='id' [value]='service.formData.id'/> -->
+        <!-- <input type='hidden' name='categoryId' [value]='service.formData.categoryId'/> -->
+        <div class='form-group'>
+            <label>Denumire</label>
+            <input class="form-control form-control-lg" placeholder="Denumire"
+            name="name" #name [(ngModel)]="service.formData.name" required [class.invalid]="name.invalid && name.touched"/>
+        </div>
+        <div class='form-group'>
+            <label>Imagine</label>
+            <input type="text" class="form-control form-control-lg" placeholder="Introduceti imaginea"
+            name="image" #image [(ngModel)]="service.formData.image" required [class.invalid]="image.invalid && image.touched"/>
+        </div>
+        <div class='form-group'>
+            <label>Descrire</label>
+            <input class="form-control form-control-lg" placeholder="Descriere"
+            name="description" #description [(ngModel)]="service.formData.description" required [class.invalid]="description.invalid && description.touched"/>
+        </div>
+        <div class='form-row'>
+        <div class='form-group col-md-6'>
+            <label>Pretul</label>
+            <input class="form-control form-control-lg" placeholder="Pretul"
+            name="price" #price [(ngModel)]="service.formData.price" required [class.invalid]="price.invalid && price.touched"/>
+        </div>
+        <div class='form-group '>
+            <label>Hipoalergenic</label>
+            <input type="radio" style="height:5; width: 5;" placeholder="Hipoalergenic" placeholder="Da"
+            name="hypoalergenic" #hypoalergenic [(ngModel)]="service.formData.hypoalergenic" required [class.invalid]="hypoalergenic.invalid && hypoalergenic.touched"/>
+            <span>Da</span>
+            <input type="radio"  placeholder="Hipoalergenic" value='' placeholder="Nu"
+            name="hypoalergenic" #hypoalergenic [(ngModel)]="service.formData.hypoalergenic"/>
+            <span>Nu</span>
+
+        </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <button class="btn btn-info btn-lg btn-block" (mouseover)="insertRecord(this.form)">Introduceti rasa</button>
+        </div>
+    </form>
     </div>
     <div class="col-md-6">
         <table  class="table">
@@ -25,13 +76,14 @@
             </thead>
             <tbody>
                 <script>document.write(dataBreeds)</script>
-                <tr *ngfor="let ab of dataBreeds"><!--service.list-->
-                    <td (click)="populateForm(ab)">{{ab.name}}</td>
-                    <td (click)="populateForm(ab)">{{ab.image}}</td>
-                    <td (click)="populateForm(ab)">{{ab.description}}</td>
-                    <td (click)="populateForm(ab)">{{ab.hypoalergenic}}</td>
-                    <td (click)="populateForm(ab)">{{ab.price}}</td>
-                    <th>name</th>
+                <tr *ngFor="let ab of breeds">
+                    <td ><img src="{{ab.image}}" width="150" height="150"></td>
+                    <td >{{ab.name}}</td>
+                   
+                    <td >{{ab.description}}</td>
+                    <td >{{ab.hypoalergenic}}</td>
+                    <td >{{ab.price}}</td>
+                   
                     <td>
                         <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(ab.name)">Delete</i>
                     </td>

@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Project",
+    "\\Project\\back-end",
+    "\\Project\\front-end"
   ],
   "PreviewInSolutionExplorer": false
 }

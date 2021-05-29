@@ -19,7 +19,8 @@ readonly APIUrl = 'https://localhost:44322/Api';
 formData: BreedDTO = new BreedDTO();
 list: BreedDTO[];
 public dataBreeds: BreedDTO[];
-
+currentAnimal: string = null;
+itemInserted: boolean = false;
 ////////////////
 // pentru a putea obtine rasele pentru animalele selectate
 /////////////////
@@ -30,45 +31,35 @@ public dataBreeds: BreedDTO[];
   getAnimalsList(): Observable<any[]>{
     return this.http.get<any>(this.APIUrl + '/getCategories');
   }
-  ////////////////////////////////////
-  // functie de obtinere rasa
-  /////////////////////////////////////
-  getBreedsList(id: string): Observable<any[]>{
 
-    const url = this.APIUrl + '/getBreeds/';
-    return this.http.get<any>(url + id);
-
-
-  }
+  /////////////////////
+  // obtin rasele 
   showBreeds(id: string){
+    return this.http.get<any[]>(this.APIUrl + '/getBreeds/' + id);
+  }
 
-    this.getBreedsList(id).subscribe(data => {
-      console.warn(data);
-     this.dataBreeds = data;
-
-  }); }
 
   //////////////////////////////////////////
   // functie de stergere rasa
   /////////////////////////////////////////
     deleteBreed(id: string){
-    return this.http.delete(this.APIUrl + '/Delete/' + id);
+    return this.http.delete(this.APIUrl + '/Delete/' + id,{ responseType: 'text' });
   }
 
   //////////////////////////////////////
   // functie de adaugare rasa
   /////////////////////////////////////
-    postaddBreed(id: string){
-
-     return this.http.post(this.APIUrl + '/Insert', id);
+    postaddBreed(breed: BreedDTO){
+      console.log(breed);
+     return this.http.post(this.APIUrl + '/Insert', breed, { responseType: 'text' });
   }
 
   ///////////////////////////////////
 // refresh la fomular
 ////////////////////////////////////
-   refreshList(){
-    this.http.get(this.APIUrl + '/getBreeds')
-    .toPromise()
-    .then(res => this.list = res as BreedDTO[]);
-  }
+  //  refreshList(id: string){
+  //   this.http.get(this.APIUrl + '/getBreeds/' + id)
+  //   .toPromise()
+  //   .then(res => this.list = res as BreedDTO[]);
+  // }
 }
